@@ -53727,7 +53727,7 @@ j=A.b([new A.G4(!1,s,q,m.x?l:new A.Sr(m.aud(),B.WC,l),B.y,j,16,!0,!1,!0,50,l)],r
 s=b.length
 if(s===0)j.push(new A.fX(B.c.cf(m.f.a.a).toLowerCase().length!==0?B.SC:A.u0(m.a.dx,l,l,l,B.Z),l))
 else j.push(A.aOJ(new A.aHC(m,b),s))
-if(b.length!==0)j.push(new A.fX(m.afF(b),l))
+if(b.length!==0&&m.a.r!=="saved")j.push(new A.fX(m.afF(b),l))
 return new A.EG(new A.d3(new A.aHD(m),A.aNk(j),l,t.WA),k.r.b+96,new A.aHE(m),l)},
 asJ(){var s=null
 return A.pL(s,!1,this.f,A.QO(s,new A.hf(4,A.cx(99),B.n),s,s,s,s,s,s,!0,s,s,s,s,s,s,B.fk,!0,s,s,s,s,s,s,s,s,s,s,s,s,s,B.cq,"Search posts and sources",s,s,s,s,s,!0,s,s,s,!0,!0,!1,s,B.qo,s,s,s,s,s,s,s,s,s,s,s,s),this.r,s,new A.aHc(this),s,B.CC,B.cJ,B.nr)},
@@ -53768,7 +53768,7 @@ case 4:o=p.c
 if(o!=null)o.aj(t.Pu).f.nF(B.C5)
 case 1:return A.p(q,r)}})
 return A.q($async$tD,r)},
-ar2(a,b){var s,r,q,p=this,o=null,n=a[b],m=n.w,l=p.WK(n),k=A.aXp(n),j=A.bax(n),i=p.a.w,h=B.c.cf(A.h7(n.r,"\n"," ")),g=p.WJ(n)?0.45:1,f=A.ck(o,o,B.m,i,o,o,o,16,B.IF,o,o,o,3),e=A.as(k,1,B.R,o,B.ZI,o,o),d=j.length===0?"":"  \xb7  "+j,c=t.p
+ar2(a,b){var s,r,q,p=this,o=null,n=a[b],m=n.w,l=p.WK(n),k=A.aXp(n),j=A.bax(n),i=p.a.w,h=B.c.cf(A.h7(n.r,"\n"," ")),g=p.WJ(n)&&p.a.r!=="saved"?0.45:1,f=A.ck(o,o,B.m,i,o,o,o,16,B.IF,o,o,o,3),e=A.as(k,1,B.R,o,B.ZI,o,o),d=j.length===0?"":"  \xb7  "+j,c=t.p
 d=A.b([f,new A.hI(1,B.cj,e,o),A.as(d+"  \xb7  "+A.v8(n.x),o,o,o,B.ZF,o,o)],c)
 if(n.z)B.b.K(d,A.b([B.cG,A.em(B.qk,i,o,o,16)],c))
 d.push(B.jJ)
