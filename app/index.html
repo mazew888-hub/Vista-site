@@ -11,6 +11,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="Vista">
   <meta name="theme-color" content="#0A0A0B">
+  <meta name="color-scheme" content="dark">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" href="favicon.png">
   <title>Vista</title>
@@ -94,6 +95,10 @@
       el.classList.add('out');
       setTimeout(function () { el.remove(); }, 700);
     };
+    // Keep a copy of Vista on the phone so it opens without downloading.
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('vista_sw.js').catch(function () {});
+    }
     // Never leave the card up if something goes wrong.
     setTimeout(function () { window.vistaReady(); }, 15000);
   </script>
