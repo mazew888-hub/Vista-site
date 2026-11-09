@@ -19,7 +19,10 @@ self.addEventListener('fetch', (event) => {
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     const hit = await cache.match(key, { ignoreSearch: req.mode === 'navigate' });
-    const fresh = fetch(req)
+    // Always ask the site whether there's something newer (a quick check
+    // when nothing changed), rather than trusting the browser's own copy.
+    const fresh = fetch(req.mode === 'navigate' ? self.registration.scope : req.url,
+                        { cache: 'no-cache', credentials: 'same-origin' })
       .then((res) => {
         if (res && res.ok && res.type === 'basic') cache.put(key, res.clone());
         return res;
