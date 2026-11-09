@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Vista, an image-first feed reader.">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Exactly what Vista's engine sets when it starts, so nothing shifts. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -99,6 +100,16 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('vista_sw.js').catch(function () {});
     }
+    // iPhone drops a web app's drawing surface while it's in the background;
+    // coming back, nudge Vista to redraw at once instead of sitting black.
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState !== 'visible') return;
+      requestAnimationFrame(function () { window.dispatchEvent(new Event('resize')); });
+      setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 350);
+    });
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) window.dispatchEvent(new Event('resize'));
+    });
     // Never leave the card up if something goes wrong.
     setTimeout(function () { window.vistaReady(); }, 15000);
   </script>
